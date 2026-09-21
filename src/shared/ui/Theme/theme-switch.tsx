@@ -3,6 +3,7 @@ import { useTheme } from "./theme-provider";
 import { themes } from "./model/theme-list";
 import type { ThemeList } from "./types";
 import { GAP, HALF_ICON, ICON_SIZE, PADDING } from "./model/consts";
+import { Button } from "../Button/Button";
 
 interface ThemeSwitchProps {
   className?: string;
@@ -45,11 +46,13 @@ export const ThemeSwitch = ({ className }: ThemeSwitchProps) => {
         }}
       />
       {themes.map((item) => (
-        <item.icon
-          key={item.id}
-          className={clsx(globalClasses.icon)}
-          onClick={() => onChangeTheme(item.title, item.id)}
-        />
+        <Button variant="primary">
+          <item.icon
+            key={item.id}
+            className={clsx(globalClasses.icon)}
+            onClick={() => onChangeTheme(item.title, item.id)}
+          />
+        </Button>
       ))}
     </div>
   );
