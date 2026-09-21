@@ -1,8 +1,20 @@
 @import "tailwindcss";
-@import './colors.css';
+@import './styles/colors.css';
+
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+body {
+  background-color: hsl(var(--color-bg));
+  color: hsl(var(--color-fg));
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 button {
@@ -19,5 +31,5 @@ button, textarea, input, a {
     outline: 0;
     padding: 0;
     margin: 0;
-    cursor: pointer;бля
+    cursor: pointer;
 }

@@ -1,0 +1,90 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Фоны — заметно различимые слои */
+  --color-bg: #f7f6f3; 
+  --color-bg-subtle: #efece6;    /* чуть темнее */
+  --color-bg-muted: #e5e1d8;     /* явно темнее, для инпутов/hover */
+
+  /* Поверхности (карточки) — чуть светлее фона, чтобы выделяться */
+  --color-surface: #ffffff;
+  --color-surface-hover: #faf9f6;
+
+  /* Текст */
+  --color-fg: #1a1a1a;
+  --color-fg-muted: #5a5a5a;
+  --color-fg-subtle: #8a8a8a;
+
+  /* Границы — заметные, не «на грани» */
+  --color-border: #d4cfc4;
+  --color-border-strong: #a8a196;
+
+  /* Акцент — насыщенный индиго */
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-fg: #ffffff;
+
+  /* Карточки (алиасы на surface для совместимости) */
+  --color-card: #ffffff;
+  --color-card-hover: #faf9f6;
+
+  /* Статусы */
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+
+  /* Тени — заметнее, чем раньше */
+  --shadow-card: 0 1px 3px 0 rgb(26 26 26 / 0.08), 0 4px 12px -2px rgb(26 26 26 / 0.06);
+  --shadow-card-hover: 0 4px 16px -4px rgb(26 26 26 / 0.15), 0 2px 8px -2px rgb(26 26 26 / 0.08);
+}
+
+.dark {
+  /* Фоны — глубокий сине-фиолетовый, с явной иерархией */
+  --color-bg: #0d0d14;
+  --color-bg-subtle: #16161f;
+  --color-bg-muted: #1f1f2b;
+
+  /* Поверхности — заметно светлее фона */
+  --color-surface: #1a1a24;
+  --color-surface-hover: #22222e;
+
+  /* Текст */
+  --color-fg: #f5f5f7;
+  --color-fg-muted: #a8a8b3;
+  --color-fg-subtle: #6e6e7a;
+
+  /* Границы — видны на тёмном */
+  --color-border: #2e2e3d;
+  --color-border-strong: #45455a;
+
+  /* Акцент — светлее, чтобы «горел» на тёмном */
+  --color-accent: #818cf8;
+  --color-accent-hover: #a5b4fc;
+  --color-accent-fg: #0d0d14;
+
+  /* Карточки */
+  --color-card: #1a1a24;
+  --color-card-hover: #22222e;
+
+  /* Статусы — приглушённые, чтобы не резали глаз */
+  --color-danger: #f87171;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+
+  /* Тени — на тёмном работают иначе, делаем глубже */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 4px 12px -2px rgb(0 0 0 / 0.4);
+  --shadow-card-hover: 0 4px 16px -4px rgb(0 0 0 / 0.6), 0 2px 8px -2px rgb(0 0 0 / 0.5);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
