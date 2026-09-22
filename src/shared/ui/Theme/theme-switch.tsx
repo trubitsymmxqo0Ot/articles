@@ -2,27 +2,19 @@ import clsx from "clsx";
 import { useTheme } from "./theme-provider";
 import { themes } from "./model/theme-list";
 import type { ThemeList } from "./types";
-import { GAP, HALF_ICON, ICON_SIZE, PADDING } from "./model/consts";
 import { Button } from "../Button/Button";
 
 interface ThemeSwitchProps {
   className?: string;
+  collapsed?: boolean;
 }
 
-export const ThemeSwitch = ({ className }: ThemeSwitchProps) => {
+export const ThemeSwitch = ({ className, collapsed = false }: ThemeSwitchProps) => {
   const { theme, toggleTheme } = useTheme();
 
-  const onChangeTheme = (title: ThemeList, id: number) => {
+  const onChangeTheme = (title: ThemeList) => {
     if (title === theme) return;
     toggleTheme(title);
-  };
-
-  const offset = () => {
-    const index = themes.findIndex((item) => item.title === theme);
-    if (index !== -1) {
-      return PADDING + index * (ICON_SIZE + GAP) + HALF_ICON;
-    }
-    return HALF_ICON;
   };
 
   const globalClasses = {
@@ -32,25 +24,25 @@ export const ThemeSwitch = ({ className }: ThemeSwitchProps) => {
   return (
     <div
       className={clsx(
-        "flex bg-bg-muted py-5 px-4 gap-8 items-center relative z-10",
+        "flex bg-bg-muted items-center justify-center relative z-10 py-theme-padding",
+        collapsed ? 'gap-4' : 'gap-7',
         className,
       )}
     >
-      <div
-        className={clsx(
-          "absolute top-0 left-0 bg-bg w-10 h-10 overflow-hidden rounded-full",
-          globalClasses.bg,
-        )}
-        style={{
-          left: `${offset()}px`,
-        }}
-      />
       {themes.map((item) => (
-        <Button variant="primary">
+        <Button key={item.id} variant="primary" className="relative">
+          {item.title === theme && (
+            <div
+              className={clsx(
+                "absolute top-0 left-1/2 bg-bg w-10 h-10 overflow-hidden rounded-full",
+                globalClasses.bg,
+              )}
+            />
+          )}
           <item.icon
             key={item.id}
             className={clsx(globalClasses.icon)}
-            onClick={() => onChangeTheme(item.title, item.id)}
+            onClick={() => onChangeTheme(item.title)}
           />
         </Button>
       ))}

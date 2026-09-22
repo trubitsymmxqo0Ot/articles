@@ -1,0 +1,6 @@
+@theme {
+    --height-navbar:60px;
+    --padding-theme-padding: 15px;
+    --width-sidebar-collapsed: 100px;
+    --width-sidebar-active: 350px;
+}
