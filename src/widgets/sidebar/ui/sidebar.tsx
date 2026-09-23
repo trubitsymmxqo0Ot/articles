@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { Button } from "shared/ui/Button/Button";
-import { ThemeSwitch } from "shared/ui/Theme/theme-switch";
+import { useTranslation } from "react-i18next";
+import { Button } from "shared/ui/button/button";
+import { LanguageSwitcher } from "shared/ui/language-switcher/language-switcher";
+import { ThemeSwitch } from "shared/ui/theme/theme-switch";
 
 interface SidebarProps {
   className?: string;
@@ -9,7 +11,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(true);
-
+  const {t} = useTranslation('sidebar');
   return (
     <nav
       className={clsx(
@@ -23,7 +25,10 @@ export const Sidebar = ({ className }: SidebarProps) => {
         <div className="flex-1 w-full">
         <ThemeSwitch collapsed={collapsed}/>
         </div>
-        <Button onClick={() => setCollapsed(!collapsed)}>Открыть</Button>
+        <div className="flex flex-col gap-4 items-center">
+        <LanguageSwitcher/>
+        <Button onClick={() => setCollapsed(!collapsed)}>{collapsed ? t('actions.open') : t('actions.close')}</Button>
+        </div>
     </nav>
   );
 };

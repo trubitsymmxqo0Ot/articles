@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { ThemeProvder } from "../shared/ui/Theme/theme-provider";
+import { ThemeProvder } from "../shared/ui/theme/theme-provider";
 import { Layout } from "./layout";
 
 interface ProvidersProps {

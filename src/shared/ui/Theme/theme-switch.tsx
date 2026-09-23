@@ -1,8 +1,8 @@
 import clsx from "clsx";
+import type { ThemeList } from "./types";
+import { Button } from "../button/button";
 import { useTheme } from "./theme-provider";
 import { themes } from "./model/theme-list";
-import type { ThemeList } from "./types";
-import { Button } from "../Button/Button";
 
 interface ThemeSwitchProps {
   className?: string;
